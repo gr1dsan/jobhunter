@@ -1,8 +1,11 @@
 from django.shortcuts import render
-
-def home(request):
-    return render(request, "index.html")
+from ..models import Seeker
 
 
-def seeker_page(request):
-    return render(request, "api/seeker.html")
+def main(request):
+    seekers = Seeker.objects.all().order_by('-created_at')
+    return render(request, 'main.html', {'seekers': seekers})
+
+
+def seeker_index(request, seeker_id):
+    return render(request, 'seeker_index.html')

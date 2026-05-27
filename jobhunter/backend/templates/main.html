@@ -1,0 +1,64 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jobhunter</title>
+
+    <link rel="stylesheet" href="{% static 'css/main/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main/seekers.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main/modal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main/footer.css' %}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Seekers</h1>
+
+        <button id="openModalBtn" class="add-btn">+ Add</button>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <div id="seekersList" class="seekers-list">
+        <p class="empty-message">No seekers yet</p>
+    </div>
+
+</div>
+
+
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+
+        <h2>Create Seeker</h2>
+
+        <input type="text" id="title" placeholder="Data engineer">
+
+        <div class="modal-actions">
+            <button id="closeModalBtn" class="cancel">Cancel</button>
+            <button id="createBtn">Create</button>
+        </div>
+
+    </div>
+</div>
+
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+<footer class="bottom-nav">
+    <div class="nav-left">JOBHUNTER</div>
+
+    <div class="nav-links">
+        <a class="footer-link" href="https://github.com/gr1dsan/jobhunter">Project Repository</a>
+        <a class="footer-link" href="https://www.linkedin.com/in/vladyslav-hridin-b11b68356/">LinkedIn</a>
+        <a class="footer-link" href="/help/">Info</a>
+    </div>
+</footer>
+
+</html>

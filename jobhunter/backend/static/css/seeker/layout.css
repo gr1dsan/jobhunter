@@ -1,0 +1,21 @@
+h1, h2 {
+    margin-bottom: 15px;
+}
+
+label {
+    color: #aaa;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
