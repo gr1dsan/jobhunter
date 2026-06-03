@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+p {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.gs-hero {
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
+
+.gs-steps {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gs-step {
+    width: 40%;              
+    min-width: 320px;       
+    background: #000;
+    border: 1px solid #4a4a4a;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;       
+}
+
+.gs-step h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.gs-step p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+code {
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 13px;
+    background: #1f2937;
+}
+
+a {
+    text-decoration: none;
+    color: lightblue;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.2s;
+    margin: 5px;
+}
+
+.btn-primary {
+    background: #ff5d2bb9;
+    color: #ffffff;
+}

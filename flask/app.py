@@ -214,6 +214,10 @@ def index():
     dag_paused = get_dag_status()
     return render_template("index.html", jobs=jobs, filters=filters, profile=profile, dag_paused=dag_paused)
 
+@app.route("/info")
+def get_started():
+    return render_template("get_started.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5001)

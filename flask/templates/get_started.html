@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Started — JOBHUNTER</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='components.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='instructions.css') }}">
+
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">JOBHUNTER</div>
+    <div class="nav-links">
+        <a href="/info">Get Started</a>
+        <a href="https://github.com/gr1dsan/jobhunter" target="_blank">Project Repository</a>
+        <a href="https://www.linkedin.com/in/vladyslav-hridin-b11b68356/" target="_blank">LinkedIn</a>
+    </div>
+</div>
+
+<div class="gs-hero">
+    <h1>Set up Jobhunter</h1>
+    <p>Follow the steps below to get the scraping pipeline running locally with Docker.</p>
+</div>
+
+<div class="gs-steps">
+
+    <div class="gs-step">
+        <div class="gs-step-num">01</div>
+        <h3>Add your Groq API key</h3>
+        <p>
+            Open the <code>.env</code> file in the project root and paste your Groq API key.
+            Groq provides access to extremely fast AI models, and its free tier is sufficient
+            for this project. Don’t have an API key yet? Get one at
+            <a href="https://console.groq.com/" target="_blank">console.groq.com</a>.
+        </p>
+        <p>You can use it without that but you are going to lose AI job analysis.</p>
+        <p>If you don't need it, skip this step.</p>
+    </div>
+
+    <div class="gs-step">
+        <div class="gs-step-num">02</div>
+        <h3>Start the containers</h3>
+        <p>
+            Run <code>docker compose up --build</code> in your terminal to build and start all services.
+        </p>
+    </div>
+
+    <div class="gs-step">
+        <div class="gs-step-num">03</div>
+        <h3>Open the interfaces</h3>
+        <p>
+            Go to <a href="http://localhost:5001" target="_blank">localhost:5001</a> for the Flask application and
+            <a href="http://localhost:8080" target="_blank">localhost:8080</a> for Airflow.
+            Default Airflow credentials: <strong>admin</strong> / <strong>admin</strong>.
+        </p>
+    </div>
+
+    <div class="gs-step">
+        <div class="gs-step-num">04</div>
+        <h3>Start scraping</h3>
+        <p>
+            Click the <strong>Play</strong> button in the Flask application to start the scraping pipeline.
+            Results will appear in the Jobs tab as they are collected.
+        </p>
+        <p>
+            By default, the pipeline runs every hour. You can change the schedule at any time
+            in the Airflow UI at
+            <a href="http://localhost:8080" target="_blank">localhost:8080</a>.
+        </p>
+    </div>
+
+</div>
+
+<div class="gs-cta">
+    <a class="btn-primary" href="/">Go back</a>
+</div>
+
+</body>
+</html>
