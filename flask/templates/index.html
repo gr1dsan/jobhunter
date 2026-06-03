@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JOBHUNTER</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='toggle.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='components.css') }}">
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="logo">JOBHUNTER</div>
+
+    <form method="POST" action="/toggle_dag">
+        <button class="dag-btn" type="submit">
+            {% if dag_paused %}▶ Start{% else %}⏸ Pause{% endif %}
+        </button>
+    </form>
+
+    <div class="nav-links">
+        <a href="/">Get Started</a>
+        <a href="https://github.com" target="_blank">Project Repository</a>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+    </div>
+</div>
+
+<input type="radio" name="view" id="jobs" checked>
+<input type="radio" name="view" id="filters">
+<input type="radio" name="view" id="profile">
+
+<div class="toggle-wrapper">
+    <div class="toggle-pill">
+        <label for="jobs">Jobs</label>
+        <label for="filters">Filters</label>
+        <label for="profile">Profile</label>
+    </div>
+</div>
+
+<div class="container">
+
+<div class="jobs-panel">
+{% if jobs %}
+    {% for job in jobs %}
+    <div class="job-card">
+
+        {% if job["compatibility"] %}
+        <div class="compatibility">{{ job["compatibility"] }}/5</div>
+        {% endif %}
+
+        <h2>{{ job["title"] }}</h2>
+
+        <div class="meta">
+            <span>{{ job["company"] }}</span>
+            <span>{{ job["location"] }}</span>
+            <span class="salary">{{ job["min_salary"] }} - {{ job["max_salary"] }} € {% if job["is_net"] == 1 %}net{% else %}gross{% endif %}</span>
+        </div>
+
+      <div class="skills">
+      <div style="display:flex; gap:40px;">
+           <div>
+               <div>Soft Skills</div>
+               <ul>
+                   {% for skill in job["soft_skills"] %}
+                       <li>{{ skill }}</li>
+                   {% endfor %}
+               </ul>
+           </div>
+           <div>
+               <div>Hard Skills</div>
+               <ul>
+                   {% for skill in job["hard_skills"] %}
+                       <li>{{ skill }}</li>
+                   {% endfor %}
+               </ul>
+           </div>
+       </div>
+    </div>
+        <div class="details">{{ job["details"] }}</div>
+
+        <a class="job-link" href="{{ job['url'] }}" target="_blank">View Job</a>
+
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="empty">Nothing here yet</div>
+{% endif %}
+</div>
+
+<div class="filters-panel">
+<form method="POST" class="filter-card">
+
+    <div class="filter-group">
+        <label>Keyword</label>
+        <input type="text" name="keyword" value="{{ filters.keyword }}">
+    </div>
+
+    <div class="filter-group">
+        <label>Cities</label>
+        <div class="checkbox-grid">
+            <label><input type="checkbox" name="cities" value="Vilnius" {% if "Vilnius" in filters.cities %}checked{% endif %}> Vilnius</label>
+            <label><input type="checkbox" name="cities" value="Kaunas" {% if "Kaunas" in filters.cities %}checked{% endif %}> Kaunas</label>
+            <label><input type="checkbox" name="cities" value="Klaipeda" {% if "Klaipeda" in filters.cities %}checked{% endif %}> Klaipeda</label>
+            <label><input type="checkbox" name="cities" value="Šiauliai" {% if "Šiauliai" in filters.cities %}checked{% endif %}> Šiauliai</label>
+            <label><input type="checkbox" name="cities" value="Panevėžys" {% if "Panevėžys" in filters.cities %}checked{% endif %}> Panevėžys</label>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <label>Categories</label>
+        <div class="checkbox-grid">
+            <label><input type="checkbox" name="categories" value="administration" {% if "administration" in filters.categories %}checked{% endif %}> Administration</label>
+            <label><input type="checkbox" name="categories" value="it" {% if "it" in filters.categories %}checked{% endif %}> IT</label>
+            <label><input type="checkbox" name="categories" value="finance" {% if "finance" in filters.categories %}checked{% endif %}> Finance</label>
+            <label><input type="checkbox" name="categories" value="marketing" {% if "marketing" in filters.categories %}checked{% endif %}> Marketing</label>
+            <label><input type="checkbox" name="categories" value="sales" {% if "sales" in filters.categories %}checked{% endif %}> Sales</label>
+            <label><input type="checkbox" name="categories" value="engineering" {% if "engineering" in filters.categories %}checked{% endif %}> Engineering</label>
+            <label><input type="checkbox" name="categories" value="construction" {% if "construction" in filters.categories %}checked{% endif %}> Construction</label>
+            <label><input type="checkbox" name="categories" value="transport_logistics" {% if "transport_logistics" in filters.categories %}checked{% endif %}> Logistics</label>
+            <label><input type="checkbox" name="categories" value="warehousing" {% if "warehousing" in filters.categories %}checked{% endif %}> Warehousing</label>
+            <label><input type="checkbox" name="categories" value="security" {% if "security" in filters.categories %}checked{% endif %}> Security</label>
+            <label><input type="checkbox" name="categories" value="law" {% if "law" in filters.categories %}checked{% endif %}> Law</label>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <label>Working Hours</label>
+        <div class="checkbox-grid">
+            <label><input type="checkbox" name="working_hours" value="full_time" {% if "full_time" in filters.working_hours %}checked{% endif %}> Full Time</label>
+            <label><input type="checkbox" name="working_hours" value="part_time" {% if "part_time" in filters.working_hours %}checked{% endif %}> Part Time</label>
+        </div>
+    </div>
+
+    <div class="filter-group">
+        <label>Minimum Salary</label>
+        <input type="number" name="min_salary" value="{{ filters.min_salary }}">
+    </div>
+
+    <button class="save-btn" type="submit" formaction="/save_filters">Save Filters</button>
+
+</form>
+</div>
+
+<div class="profile-panel">
+
+    <div class="profile-section">
+        <h3>Job Titles</h3>
+        <form method="POST" action="/add_title">
+            <div class="add-row">
+                <input type="text" name="title" placeholder="e.g. Backend Developer">
+                <button class="add-btn" type="submit">Add</button>
+            </div>
+        </form>
+        <div class="tag-list">
+            {% for title in profile.titles %}
+            <form method="POST" action="/remove_title">
+                <input type="hidden" name="title" value="{{ title }}">
+                <div class="tag">
+                    {{ title }}
+                    <button type="submit">✕</button>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="profile-section">
+        <h3>Skills</h3>
+        <form method="POST" action="/add_skill">
+            <div class="add-row">
+                <input type="text" name="skill" placeholder="e.g. Python">
+                <button class="add-btn" type="submit">Add</button>
+            </div>
+        </form>
+        <div class="tag-list">
+            {% for skill in profile.skills %}
+            <form method="POST" action="/remove_skill">
+                <input type="hidden" name="skill" value="{{ skill }}">
+                <div class="tag">
+                    {{ skill }}
+                    <button type="submit">✕</button>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+</div>
+</body>
+</html>

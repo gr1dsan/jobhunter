@@ -1,0 +1,182 @@
+.filter-card{
+    background:#000;
+    padding:25px;
+    border-radius:14px;
+    border:1px solid #3a3a3a;
+    margin-bottom:30px;
+}
+
+.filter-group{
+    margin-bottom:18px;
+}
+
+.filter-group > label{
+    display:block;
+    margin-bottom:10px;
+    color:#ddd;
+}
+
+input[type="text"],
+input[type="number"]{
+    width:100%;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #2a2a2a;
+    background:#0f0f10;
+    color:white;
+}
+
+.checkbox-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+    gap:10px;
+}
+
+.checkbox-grid label{
+    background:#111;
+    padding:10px;
+    border-radius:8px;
+    border:1px solid #2f2f2f;
+    font-size:14px;
+}
+
+.save-btn{
+    background:#c83915a9;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* Jobs */
+.job-card{
+    position:relative;
+    background:#000;
+    padding:20px;
+    border-radius:14px;
+    border:1px solid #4a4a4a;
+    margin-bottom:20px;
+}
+
+.job-card h2{
+    color:white;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.compatibility{
+    position:absolute;
+    top:20px;
+    right:20px;
+    color:#aaa;
+    font-size:13px;
+    font-weight:300;
+}
+
+.job-card .meta{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    color:#cfcfcf;
+    font-weight:300;
+}
+
+.job-card .salary{
+    color:#0f6b32;
+}
+
+.job-card .skills{
+    margin-top:12px;
+    color:#cfcfcf;
+    font-weight:300;
+}
+
+.job-card .skills ul{
+    margin-top:4px;
+    padding-left:18px;
+}
+
+.job-card .details{
+    margin-top:20px;
+    color:#cfcfcf;
+    font-weight:300;
+    line-height:1.6;
+}
+
+.job-link{
+    display:inline-block;
+    margin-top:20px;
+    background:#ff5d2bb9;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+/* Profile */
+.profile-section{
+    background:#000;
+    padding:25px;
+    border-radius:14px;
+    border:1px solid #3a3a3a;
+    margin-bottom:20px;
+}
+
+.profile-section h3{
+    color:#ddd;
+    font-weight:400;
+    margin-bottom:16px;
+}
+
+.add-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:16px;
+}
+
+.add-row input{
+    flex:1;
+}
+
+.add-btn{
+    background:#1a1a1a;
+    color:white;
+    border:1px solid #3a3a3a;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    white-space:nowrap;
+}
+
+.tag-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.tag{
+    background:#111;
+    border:1px solid #2f2f2f;
+    color:#cfcfcf;
+    padding:6px 14px;
+    border-radius:999px;
+    font-size:13px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.tag button{
+    background:none;
+    border:none;
+    color:#666;
+    cursor:pointer;
+    font-size:14px;
+    padding:0;
+    line-height:1;
+}
+
+.tag button:hover{
+    color:#ff5d2b;
+}
