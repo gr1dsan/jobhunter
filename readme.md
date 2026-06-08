@@ -1,6 +1,6 @@
 # JOBHUNTER
 
-![JobHunter](readme_pics/jobhunter.png)
+![jobhunter](/readme_pics/jobhunter.png)
 
 Automated job scraping pipeline with a Flask dashboard to manage search filters, view results, and control the scraper.
 
